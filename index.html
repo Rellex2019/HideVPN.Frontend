@@ -3,65 +3,426 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Изображение</title>
+    <title>VPN Secure - Защита вашей конфиденциальности</title>
     <style>
-        body {
+        * {
             margin: 0;
-            padding: 20px;
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            text-align: center;
+            padding: 0;
+            box-sizing: border-box;
         }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            background-color: white;
-            padding: 20px;
-            border-radius: 10px;
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
-        
-        h1 {
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .nav a {
+            color: #666;
+            text-decoration: none;
+            margin-left: 30px;
+            transition: color 0.3s;
+        }
+
+        .nav a:hover {
+            color: #667eea;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 100px 20px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease 0.2s backwards;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #667eea;
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            animation: fadeInUp 1s ease 0.4s backwards;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        /* Features Section */
+        .features {
+            background: white;
+            padding: 80px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 50px;
             color: #333;
+        }
+
+        .features-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            text-align: center;
+            padding: 30px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 48px;
             margin-bottom: 20px;
         }
-        
-        img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+
+        .feature-card h3 {
+            margin-bottom: 15px;
+            color: #667eea;
         }
-        
-        .info {
-            margin-top: 20px;
+
+        /* Pricing Section */
+        .pricing {
+            background: #f8f9fa;
+            padding: 80px 20px;
+        }
+
+        .pricing-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .pricing-card {
+            background: white;
+            border-radius: 15px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .pricing-card.popular {
+            border: 2px solid #667eea;
+            transform: scale(1.05);
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: 20px;
+            right: -30px;
+            background: #667eea;
+            color: white;
+            padding: 5px 30px;
+            transform: rotate(45deg);
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .pricing-card h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .price {
+            font-size: 48px;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 20px;
+        }
+
+        .price span {
+            font-size: 18px;
+            color: #999;
+        }
+
+        .features-list {
+            list-style: none;
+            margin: 30px 0;
+            text-align: left;
+        }
+
+        .features-list li {
+            padding: 10px 0;
             color: #666;
-            font-size: 14px;
+        }
+
+        .features-list li:before {
+            content: "✓";
+            color: #667eea;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .pricing-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s;
+        }
+
+        .pricing-button:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        .footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+            
+            .pricing-card.popular {
+                transform: scale(1);
+            }
+            
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .nav a {
+                margin: 0 15px;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Мое изображение</h1>
-        <img src="1.jfif" alt="Изображение" onerror="this.src='https://via.placeholder.com/400?text=Image+not+found'">
-        <div class="info">
-            <p>Файл: 1.jfif</p>
-            <p>Размер: <span id="imageSize">загрузка...</span></p>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">VPN Secure</div>
+            <nav class="nav">
+                <a href="#features">Возможности</a>
+                <a href="#pricing">Тарифы</a>
+                <a href="#contact">Контакты</a>
+            </nav>
         </div>
-    </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Защитите свою конфиденциальность</h1>
+        <p>Мгновенный и безопасный доступ к любому контенту без ограничений</p>
+        <a href="#pricing" class="cta-button">Начать сейчас</a>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <h2 class="section-title">Почему выбирают нас</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🔒</div>
+                <h3>Максимальная безопасность</h3>
+                <p>Шифрование военного уровня для защиты ваших данных</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3>Высокая скорость</h3>
+                <p>Оптимизированные серверы для максимальной производительности</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🌍</div>
+                <h3>Глобальное покрытие</h3>
+                <p>Более 50 стран и 100+ серверов по всему миру</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📱</div>
+                <h3>Все устройства</h3>
+                <p>Поддержка Windows, Mac, iOS, Android и Linux</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing">
+        <h2 class="section-title">Выберите свой тариф</h2>
+        <div class="pricing-grid">
+            <!-- Тариф 1: Базовый -->
+            <div class="pricing-card">
+                <h3>Базовый</h3>
+                <div class="price">299 <span>₽/мес</span></div>
+                <ul class="features-list">
+                    <li>1 устройство</li>
+                    <li>Скорость до 50 Мбит/с</li>
+                    <li>10 стран на выбор</li>
+                    <li>Базовое шифрование</li>
+                    <li>Поддержка 24/7</li>
+                </ul>
+                <a href="#" class="pricing-button">Выбрать тариф</a>
+            </div>
+
+            <!-- Тариф 2: Стандартный (Популярный) -->
+            <div class="pricing-card popular">
+                <div class="popular-badge">Популярный</div>
+                <h3>Стандартный</h3>
+                <div class="price">499 <span>₽/мес</span></div>
+                <ul class="features-list">
+                    <li>5 устройств</li>
+                    <li>Скорость до 200 Мбит/с</li>
+                    <li>50 стран на выбор</li>
+                    <li>Усиленное шифрование</li>
+                    <li>Приоритетная поддержка</li>
+                    <li>Безлимитный трафик</li>
+                </ul>
+                <a href="#" class="pricing-button">Выбрать тариф</a>
+            </div>
+
+            <!-- Тариф 3: Премиум -->
+            <div class="pricing-card">
+                <h3>Премиум</h3>
+                <div class="price">799 <span>₽/мес</span></div>
+                <ul class="features-list">
+                    <li>10 устройств</li>
+                    <li>Неограниченная скорость</li>
+                    <li>Все страны (100+)</li>
+                    <li>Максимальное шифрование</li>
+                    <li>VIP поддержка 24/7</li>
+                    <li>Выделенный IP</li>
+                    <li>Безлимитный трафик</li>
+                </ul>
+                <a href="#" class="pricing-button">Выбрать тариф</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="footer">
+        <p>&copy; 2024 VPN Secure. Все права защищены.</p>
+        <p style="margin-top: 10px;">📧 support@vpnsecure.ru | 📞 +7 (999) 123-45-67</p>
+    </footer>
 
     <script>
-        // Получение информации о размере изображения
-        const img = document.querySelector('img');
-        img.onload = function() {
-            document.getElementById('imageSize').textContent = 
-                `${this.naturalWidth} x ${this.naturalHeight} пикселей`;
+        // Плавная прокрутка для якорных ссылок
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Анимация появления карточек при скролле
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
         };
-        
-        img.onerror = function() {
-            document.getElementById('imageSize').textContent = 'изображение не найдено';
-        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.pricing-card, .feature-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
     </script>
+
+<div class="container">
+    <h1>Создатель этого VPN</h1>
+    <img src="1.jfif" alt="Изображение" onerror="this.src='https://via.placeholder.com/400?text=Image+not+found'">
+    <div class="info">
+        <p>Маленький член - маленькие яица</p>
+</div>
+</div>
 </body>
 </html>
